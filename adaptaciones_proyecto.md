@@ -30,6 +30,11 @@ Moodle 5.3 actuará como un **Headless CMS/LMS** (proveedor de base de datos y l
 
 Moodle expone todas sus funciones mediante Web Services. **(Estado: ¡Activado y listo para consumir!)** Ya se han habilitado las funciones de Web Services a nivel global, el protocolo REST y la integración para dispositivos móviles en el panel de administración.
 
+### 📖 Documentación Interactiva de la API (Auto-generada)
+Moodle auto-genera la documentación técnica interactiva (parámetros requeridos, respuestas JSON y ejemplos) para todas sus funciones expuestas. Tus compañeros de equipo pueden consultarla en:
+* **Ruta de Administrador:** En el panel de Moodle, ir a `Administración del sitio (Site administration) > Servidor (Server) > Servicios Web (Web services) > API de servicios web (Web services API documentation)`.
+* **Ruta de Usuario/Desarrollador:** En el menú del usuario (arriba a la derecha), ir a `Perfil (Profile) > Claves de seguridad (Security keys)` y pulsar en el enlace de **Documentación** al lado del protocolo.
+
 ### A. Autenticación y Token de Usuario
 Para iniciar sesión desde React y obtener el token de seguridad:
 *   **Endpoint (POST):**
