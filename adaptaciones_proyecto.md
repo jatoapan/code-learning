@@ -28,7 +28,7 @@ Moodle 5.3 actuará como un **Headless CMS/LMS** (proveedor de base de datos y l
 
 ## 🔌 2. Endpoints de la API de Moodle listos para usar
 
-Moodle expone todas sus funciones mediante Web Services. Para consumirlos desde React, primero debes activar **Web Services REST** en el panel de administración de Moodle y crear un servicio personalizado con los siguientes tokens/funciones:
+Moodle expone todas sus funciones mediante Web Services. **(Estado: ¡Activado y listo para consumir!)** Ya se han habilitado las funciones de Web Services a nivel global, el protocolo REST y la integración para dispositivos móviles en el panel de administración.
 
 ### A. Autenticación y Token de Usuario
 Para iniciar sesión desde React y obtener el token de seguridad:
