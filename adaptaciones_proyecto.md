@@ -30,10 +30,13 @@ Moodle 5.3 actuará como un **Headless CMS/LMS** (proveedor de base de datos y l
 
 Moodle expone todas sus funciones mediante Web Services. **(Estado: ¡Activado y listo para consumir!)** Ya se han habilitado las funciones de Web Services a nivel global, el protocolo REST y la integración para dispositivos móviles en el panel de administración.
 
-### 📖 Documentación Interactiva de la API (Auto-generada)
-Moodle auto-genera la documentación técnica interactiva (parámetros requeridos, respuestas JSON y ejemplos) para todas sus funciones expuestas. Tus compañeros de equipo pueden consultarla en:
-* **Ruta de Administrador:** En el panel de Moodle, ir a `Administración del sitio (Site administration) > Servidor (Server) > Servicios Web (Web services) > API de servicios web (Web services API documentation)`.
-* **Ruta de Usuario/Desarrollador:** En el menú del usuario (arriba a la derecha), ir a `Perfil (Profile) > Claves de seguridad (Security keys)` y pulsar en el enlace de **Documentación** al lado del protocolo.
+### 📖 Documentación de la API (Para el equipo)
+Dado que Moodle genera su API dinámicamente a través de su núcleo PHP y su base de datos, no existe un archivo de especificación estático (como un Swagger o OpenAPI) dentro del código de este repositorio. Sin embargo:
+* **En este archivo:** En la sección **B** de abajo tienen la lista exacta con las funciones REST de Moodle específicas para nuestro proyecto.
+* **Documentación Oficial en línea:** Para conocer a detalle los parámetros de entrada y salida de cada función, pueden consultar la [Documentación Oficial de Web Services de Moodle](https://builds.moodle.org/dev/webservices/).
+* **Dentro del Panel de Moodle (cuando tengan acceso):**
+  * **Ruta de Administrador:** En el panel, ir a `Administración del sitio (Site administration) > Servidor (Server) > Servicios Web (Web services) > API de servicios web (Web services API documentation)`.
+  * **Ruta de Desarrollador:** En el menú de usuario, ir a `Perfil (Profile) > Claves de seguridad (Security keys)` y pulsar en **Documentación** al lado de la clave generada.
 
 ### A. Autenticación y Token de Usuario
 Para iniciar sesión desde React y obtener el token de seguridad:
