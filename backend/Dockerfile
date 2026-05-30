@@ -28,6 +28,10 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     sodium \
     exif
 
+# Configurar parámetros requeridos de PHP para Moodle (max_input_vars a 5000)
+RUN echo "max_input_vars = 5000" >> /usr/local/etc/php/conf.d/docker-php-moodle.ini \
+    && echo "zend.exception_ignore_args = On" >> /usr/local/etc/php/conf.d/docker-php-moodle.ini
+
 # Crear el directorio de datos de Moodle
 RUN mkdir -p /var/moodledata && \
     chown -R www-data:www-data /var/moodledata && \
