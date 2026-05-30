@@ -59,8 +59,9 @@ RUN composer install --no-interaction --no-dev --optimize-autoloader
 # Ajustar permisos
 RUN chown -R www-data:www-data /var/www/html
 
-# Create entrypoint script to fix MPM at runtime
+# Create entrypoint script to fix MPM and volume permissions at runtime
 RUN echo '#!/bin/bash\n\
+chown -R www-data:www-data /var/moodledata && chmod -R 777 /var/moodledata\n\
 a2dismod mpm_event mpm_worker 2>/dev/null || true\n\
 a2enmod mpm_prefork\n\
 exec apache2-foreground' > /usr/local/bin/docker-entrypoint.sh && \
