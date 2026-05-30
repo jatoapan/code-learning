@@ -82,6 +82,3 @@ code-learning/
 3.  **Cliente API:** Usar **`axios`** o `fetch` para realizar las llamadas HTTP a tu Railway.
 
 ---
-
-### ¿Cómo empezamos el Frontend?
-Si me das luz verde, puedo inicializar de forma automática el proyecto de ReactJS usando **Vite** dentro de una nueva carpeta llamada `frontend/` en tu raíz y dejarte los archivos base estructurados. ¿Deseas que lo haga?
