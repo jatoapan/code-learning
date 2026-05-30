@@ -38,11 +38,8 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-# Habilitar rewrite y asegurar que solo mpm_prefork esté activo
-RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
-    && a2enmod mpm_prefork \
-    && a2enmod rewrite \
-    && apache2ctl -M 2>&1 | grep mpm
+# Habilitar rewrite (MPM config moved to entrypoint)
+RUN a2enmod rewrite
 
 # Copiar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -62,8 +59,15 @@ RUN composer install --no-interaction --no-dev --optimize-autoloader
 # Ajustar permisos
 RUN chown -R www-data:www-data /var/www/html
 
+# Create entrypoint script to fix MPM at runtime
+RUN echo '#!/bin/bash\n\
+a2dismod mpm_event mpm_worker 2>/dev/null || true\n\
+a2enmod mpm_prefork\n\
+exec apache2-foreground' > /usr/local/bin/docker-entrypoint.sh && \
+    chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Exponer el puerto 80
 EXPOSE 80
 
-# Iniciar Apache en primer plano
-CMD ["apache2-foreground"]
+# Definir el entrypoint de inicio
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
