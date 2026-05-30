@@ -33,7 +33,7 @@ $CFG->directorypermissions = 0777;
 // Habilitar sslproxy si la URL empieza con https (necesario detrás del balanceador de Railway)
 if (getenv('MOODLE_SSLPROXY') === 'true' || (getenv('MOODLE_URL') && strpos(getenv('MOODLE_URL'), 'https://') === 0)) {
     $CFG->sslproxy = true;
-    $CFG->reverseproxy = true;
+    $CFG->ignoreipchecks = true;
 }
 
 require_once(__DIR__ . '/public/lib/setup.php');
